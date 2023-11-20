@@ -1,0 +1,23 @@
+name: Node.js Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Install dependencies
+        run: |
+          echo "ECHO"
+          echo "$(git rev-parse @~)"
