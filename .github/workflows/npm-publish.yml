@@ -21,3 +21,4 @@ jobs:
         run: |
           echo "ECHO"
           echo "$(git rev-parse @~)"
+          echo "$(git rev-parse main~1)"
